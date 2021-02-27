@@ -49,17 +49,6 @@ dataset_t read_csv_file(char* file_name)
 
 	}
 
-
-	/* Separate data from labels in 2 different arrays */
-	// for (unsigned int i = 0; i < dataset.data.size(); ++i)
-	// {
-	// 	dataset.labels.push_back(dataset.data[i][dataset.data[i].size() - 1]);
-	// 	dataset.data[i].pop_back();
-	// }
-	// printf("________________________________________\n\n");
-
-
-
 	/* Store the dataset in a double** matrix for memory efficiency reasons */
 	dataset.aNbElements = elements.size();
 	dataset.aFeatureSize = elements[0].size() - 1;
@@ -76,34 +65,7 @@ dataset_t read_csv_file(char* file_name)
 			dataset.aData[i][j] = elements[i][j];
 		}
 		dataset.aLabels[i] = elements[i][dataset.aFeatureSize];
-		// if (dataset.aLabels[i] == 0)
-		// {
-		// 	dataset.aLabels[i] = -1;
-		// }
 	}
-
-	// for (unsigned int  i = 0; i < 2; ++i)
-	// {
-	// 	for (unsigned int j = 0; j < dataset.feature_size; ++j)
-	// 	{
-	// 		printf("%.2f ", dataset.data[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("%d ", dataset.labels[0]);
-	// printf("%d ", dataset.labels[1]);
-
-
-	// for (int i = 0; i < 10; ++i)
-	// {
-	// 	for (int j = 0; j < elements[0].size(); ++j)
-	// 	{
-	// 		printf("%.2f ", elems[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-
-	// return elems;
 	return dataset;
 }
 
@@ -150,41 +112,6 @@ void split_dataset(dataset_t dataset, dataset_t* train_set, dataset_t* test_set,
 		}
 		train_set->aLabels[i] = dataset.aLabels[i];
 	}
-	/* Realloc the dataset with a smaller dimension, the remaining elements will be used
-		for training
-	*/
-	// std::cout << "Realloc dataset with "<<train_set->aNbElements<<" elements" << std::endl;
-
-    // for (int i = 0; i < train_set->aNbElements; ++i)
-    // {
-    //     std::cout << i << "__train_____";
-    //     for (int j = 0; j < train_set->aFeatureSize; ++j)
-    //     {
-    //         std::cout << train_set->	aData[i][j]<<" ";
-    //     }
-    //     std::cout << std::endl;
-    // }
-	// printf("Address = %u\n", train_set->aData);
-	// train_set->aData = (double**)realloc(train_set->aData, train_set->aNbElements);
-	// printf("Address = %u\n", train_set->aData);
-	
-	// train_set->aLabels = (int*)realloc(train_set->aLabels, train_set->aNbElements);
-    for (int i = 0; i < dataset.aNbElements; ++i)
-    {
-		// free(dataset.aData[i]);
-		// printf("%d___train labels_____%d\n", i, train_set->aLabels[i]);
-        // std::cout << i << "__train_____"<<train_set->aLabels[i]<<endl;
-        // for (int j = 0; j < train_set->aFeatureSize; ++j)
-        // {
-        //     std::cout << train_set->	aData[i][j]<<" ";
-        // }
-        // std::cout << std::endl;
-    }
-	// free(dataset.aData);
-	// free(dataset.aData);
-
-
-	// return test_set;
 }
 
 /* Calculate the accuracy by dividing the number of correctly predicted 
@@ -204,15 +131,3 @@ double compute_accuracy(std::vector<double> predictions, double *true_labels)
 	
 	return total_correct / (float)predictions.size();
 }
-
-// void cont_to_discrete(std::vector<double> &pred)
-// {
-// 	for (size_t i = 0; i < pred.size(); i++)
-// 	{
-// 		if (pred[i] > 0.5)
-// 		{
-// 			pre
-// 		}
-		
-// 	}
-// }
