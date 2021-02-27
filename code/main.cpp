@@ -8,23 +8,23 @@
 
 
 using namespace std;
-using namespace std::chrono;
+using namespace chrono;
 
 int main(int argc, char** argv)
 { 
     /* Check if the program is called with the right parameters */
     if (argc != 6)
     {
-        std::cout << "Invalid number of arguments. Expected 3. The correct command is:" << std::endl;
-        std::cout << "  ./mlp learning_rate nb_epochs nb_hidden_layers l1,l2,etc. input_file.csv nb_threads" << std::endl;
-        std::cout << "Don't add any spaces in the <<l1,l2,...>> enumeration" << std::endl;
+        cout << "Invalid number of arguments. Expected 3. The correct command is:" << endl;
+        cout << "  ./mlp learning_rate nb_epochs l1,l2,etc. input_file.csv nb_threads" << endl;
+        cout << "Don't add any spaces in the <<l1,l2,...>> enumeration" << endl;
         exit(0);
     }
 
     double learning_rate = atof(argv[1]);
     int nb_epochs = atoi(argv[2]);
     int num_threads = atoi(argv[5]);
-    std::vector<int> architecture;
+    vector<int> architecture;
 
 
     /* Read the dataset from disk */
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 
     /* Parse the hidden layers dimensions string and append them as integers to the 
         architecture vector */
-    while ((pos = hidden_layers_str.find(delimiter)) != std::string::npos) {
+    while ((pos = hidden_layers_str.find(delimiter)) != string::npos) {
         token = hidden_layers_str.substr(0, pos);
         architecture.push_back(stoi(token));
         hidden_layers_str.erase(0, pos + delimiter.length());
@@ -51,15 +51,15 @@ int main(int argc, char** argv)
     architecture.push_back(stoi(hidden_layers_str));
     architecture.push_back(dataset.aOutputSize);
 
-    std::cout << "#threads = "<< num_threads << std::endl;
-    std::cout << "#epochs = "<< nb_epochs << std::endl;
-    std::cout << "lr = "<< learning_rate << std::endl;
-    std::cout << "#layers = "<< architecture.size() << std::endl;
+    cout << "#threads = "<< num_threads << endl;
+    cout << "#epochs = "<< nb_epochs << endl;
+    cout << "lr = "<< learning_rate << endl;
+    cout << "#layers = "<< architecture.size() << endl;
     
-    std::cout << "Architecture: " << endl;
+    cout << "Architecture: " << endl;
     for (size_t i = 0; i < architecture.size(); i++)
     {
-        std::cout << "layer" << i << " = " << architecture[i] << endl;
+        cout << "layer" << i << " = " << architecture[i] << endl;
     }
 
 
@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 
     float acc = compute_accuracy(predicted_labels, test_set.aLabels);
 
-    printf("Accuracy = %f\n", acc);
+   cout << "Accuracy = " << acc << endl;
 
     return 0; 
 }

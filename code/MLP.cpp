@@ -113,7 +113,6 @@ void MLP::initWeights()
             for (int k = 0; k < aLayersDim[i + 1]; ++k)
             {
                 aWeights[i][j][k] = -epsilon[i] + ((double)rand() / ((double)RAND_MAX / (2.0 * epsilon[i])));
-                // std::cout << aWeights[i][j][k] << std::endl;
             }
         }
     }
@@ -271,12 +270,9 @@ void MLP::computeGradients(int layer_number, double* expected_output)
 void MLP::matrixMultiply(double* mat1, double** mat2, double* result, int size_mat1, int size_mat2)
 {
     int i, j;
-    // int num_threads = omp_get_num_threads();
     
     #pragma omp parallel shared(result, mat1, mat2, i) private(j)
     {
-        // num_threads = omp_get_num_threads();
-        // std::cout << "#threads  "<< num_threads << std::endl;   
         #pragma omp for
         for (i = 0; i < size_mat2; ++i) {
             result[i] = 0.0;

@@ -10,13 +10,12 @@ using namespace std;
 
 
 
-
 /* Function which reads the dataset from a csv file */ 
 dataset_t read_csv_file(char* file_name)
 {
-	std::fstream input_file;
-	std::string line;
-	std::vector<std::vector<double> > elements;
+	fstream input_file;
+	string line;
+	vector<vector<double> > elements;
 	dataset_t dataset;
 
 	char delim = ',';
@@ -25,23 +24,21 @@ dataset_t read_csv_file(char* file_name)
 
 	if(!input_file.is_open())
 	{
-		throw std::runtime_error("File is not open");
+		throw runtime_error("File is not open");
 	}
 
 	/* Ignore the first line of the csv file */
-	std::getline(input_file, line);
+	getline(input_file, line);
 
-	// int i = 0;
-	while (std::getline(input_file, line)) {
-		std::stringstream line_stream(line);
+	while (getline(input_file, line)) {
+		stringstream line_stream(line);
 		double val;
-		std::vector<double> line_elems;
+		vector<double> line_elems;
 
 		/* Parse each line and add the elements into a vector*/
-		while (std::getline(line_stream, line, delim)) {
+		while (getline(line_stream, line, delim)) {
 			val = stof(line);
 			line_elems.push_back(val);
-			// cout<<val<<" ";
 	   	}
 
 	   	/* Add line elements to the global vector */
@@ -117,7 +114,7 @@ void split_dataset(dataset_t dataset, dataset_t* train_set, dataset_t* test_set,
 /* Calculate the accuracy by dividing the number of correctly predicted 
 	labels to the total number of labels
 */
-double compute_accuracy(std::vector<double> predictions, double *true_labels)
+double compute_accuracy(vector<double> predictions, double *true_labels)
 {
 	float total_correct = 0;
 
