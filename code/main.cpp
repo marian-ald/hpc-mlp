@@ -2,6 +2,7 @@
 
 #include <string>
 #include <chrono>
+#include <iostream>
 
 #include "MLP.hpp" 
 #include "utils.hpp"
