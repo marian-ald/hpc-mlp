@@ -29,7 +29,66 @@ def comp_histogram():
     plt.show()
 
 
-def preprocess_iris():
-    
+def plot_data():
+    """
+    Plot visualization for Q9
+    """
+    y = [[6.75, 4.07, 4.64], [9.3, 5.36, 5.2], [19.38, 11.15, 10.64], [1.12, 0.75, 0.75]]
+    x = [[1,2,4], [1,2,4], [1,2,4], [1,2,4]]
 
-comp_histogram()
+    for i in range(4):
+        plot = plt.plot(x[i], y[i], 'b')
+        plt.grid(True)
+        # Add labels and title
+        plt.xlabel("#cores")
+        plt.ylabel("Time(s)")      
+        plt.show()
+        
+        # Clear the previous plot from plt
+        plt.clf()
+        plt.cla()
+        plt.close()
+
+
+
+plot_data()
+
+"""
+Time taken by function: 8.78533 s
+
+
+Time taken by function: 8.4577 s
+
+
+Time taken by function: 11.0519 s
+
+
+==================== Test 2 ====================
+Time taken by function: 10.0263 s
+
+
+Time taken by function: 5.42074 s
+
+
+Time taken by function: 10.4068 s
+
+
+==================== Test 3 ====================
+Time taken by function: 26.0113 s
+
+
+Time taken by function: 14.9605 s
+
+
+Time taken by function: 11.1214 s
+
+
+==================== Test 4 ====================
+Time taken by function: 1.13549 s
+
+
+Time taken by function: 0.758861 s
+
+
+Time taken by function: 0.777303 s
+"""
