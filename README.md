@@ -11,3 +11,6 @@ To execute the program, run:
 For example:
 
     ./mlp 0.001 100 50,60,50,10 ../data/heart_disease_norm.csv 2
+
+
+The full documentation of the project can be found in `report.pdf`.
